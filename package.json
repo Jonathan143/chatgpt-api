@@ -1,9 +1,9 @@
 {
-  "name": "chatgpt",
+  "name": "@jonathan143/chatgpt",
   "version": "4.4.1",
   "description": "Node.js client for the unofficial ChatGPT API.",
-  "author": "Travis Fischer <travis@transitivebullsh.it>",
-  "repository": "transitive-bullshit/chatgpt-api",
+  "author": "jonathan143",
+  "repository": "jonathan143/chatgpt-api",
   "license": "MIT",
   "type": "module",
   "source": "./src/index.ts",
@@ -11,6 +11,7 @@
   "exports": {
     ".": {
       "import": "./build/index.js",
+      "require": "./build/index.cjs",
       "types": "./build/index.d.ts",
       "default": "./build/index.js"
     }
