@@ -243,6 +243,7 @@ export class ChatGPTAPI {
         }
 
         if (stream) {
+          let reply = ''
           fetchSSE(
             url,
             {
@@ -252,7 +253,7 @@ export class ChatGPTAPI {
               signal: abortSignal,
               onMessage: (data: string) => {
                 if (data === '[DONE]') {
-                  result.text = result.text.trim()
+                  result.text = reply.trim()
                   return resolve(result)
                 }
 
@@ -265,7 +266,8 @@ export class ChatGPTAPI {
                   }
 
                   if (response?.choices?.length) {
-                    result.text += response.choices[0].text
+                    result.text = response.choices[0].text
+                    reply += result.text
                     result.detail = response
 
                     onProgress?.(result)
